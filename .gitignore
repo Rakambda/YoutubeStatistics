@@ -4,7 +4,7 @@ build/
 logs/
 out/
 target/
-settings/
+/settings/
 
 *.iml
 *secret*.json
