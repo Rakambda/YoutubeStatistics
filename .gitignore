@@ -1,0 +1,13 @@
+.gradle/
+.idea/
+build/
+logs/
+out/
+target/
+settings/
+
+*.iml
+*secret*.json
+config*.json
+secrets.properties
+watch-history.json
