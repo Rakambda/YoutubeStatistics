@@ -8,7 +8,6 @@ import fr.raksrinana.youtubestatistics.utils.YouTubeHelper;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import me.tongfei.progressbar.ProgressBar;
-import me.tongfei.progressbar.ProgressBarStyle;
 import org.threeten.extra.AmountFormats;
 import picocli.CommandLine;
 import java.nio.file.Path;
@@ -47,7 +46,7 @@ public class Main{
 				final var videosToGet = videoIds.stream().filter(video -> !userConfiguration.contains(video)).collect(Collectors.toList());
 				log.info("{} new videos to get", videosToGet.size());
 				if(!videosToGet.isEmpty()){
-					try(final var progressBar = new ProgressBar("Getting video info", videosToGet.size(), ProgressBarStyle.ASCII)){
+					try(final var progressBar = new ProgressBar("Getting video info", videosToGet.size())){
 						userConfiguration.addChannels(videosToGet.stream().flatMap(video -> {
 							progressBar.setExtraMessage("Processing " + video.getVideoId().orElse(null));
 							final var info = youtube.getVideoInfo(video).stream();
