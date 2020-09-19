@@ -22,7 +22,7 @@ plugins {
 
 group = 'fr.raksrinana'
 description = 'YouTubeStatistics'
-sourceCompatibility = targetCompatibility = JavaVersion.VERSION_14
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_15
 
 mainClassName = project.mainClass
 

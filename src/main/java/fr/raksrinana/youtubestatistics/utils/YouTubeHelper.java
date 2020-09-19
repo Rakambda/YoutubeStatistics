@@ -19,8 +19,8 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.threeten.extra.PeriodDuration;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.security.GeneralSecurityException;
 import java.time.DateTimeException;
 import java.util.*;
@@ -100,7 +100,7 @@ public class YouTubeHelper{
 	}
 	
 	public static Credential authorize(final NetHttpTransport httpTransport) throws IOException{
-		final var clientSecrets = GoogleClientSecrets.load(getJSON_FACTORY(), new FileReader(Main.getParameters().getYouTubeSecretsPath().toFile()));
+		final var clientSecrets = GoogleClientSecrets.load(getJSON_FACTORY(), Files.newBufferedReader(Main.getParameters().getYouTubeSecretsPath()));
 		final var flow = new GoogleAuthorizationCodeFlow.Builder(httpTransport, getJSON_FACTORY(), clientSecrets, getSCOPES()).build();
 		return new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
 	}

@@ -8,8 +8,8 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import fr.raksrinana.youtubestatistics.Main;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
 import java.util.Optional;
@@ -29,8 +29,8 @@ public class Settings{
 	@NonNull
 	private static Optional<UserConfiguration> loadConfiguration(@NonNull final String userId){
 		final var userConfPath = getConfigPath(userId);
-		if(userConfPath.toFile().exists()){
-			try(final var fis = new FileInputStream(userConfPath.toFile())){
+		if(Files.exists(userConfPath)){
+			try(final var fis = Files.newInputStream(userConfPath)){
 				return Optional.ofNullable(objectReader.readValue(fis));
 			}
 			catch(final IOException e){
@@ -55,8 +55,8 @@ public class Settings{
 	
 	private static void saveConfiguration(final String userId, @NonNull final UserConfiguration value){
 		final var userConfPath = getConfigPath(userId);
-		userConfPath.getParent().toFile().mkdirs();
 		try{
+			Files.createDirectories(userConfPath.getParent());
 			objectWriter.writeValueAsString(value);
 			objectWriter.writeValue(userConfPath.toFile(), value);
 			log.info("Wrote settings to {}", userConfPath);
@@ -68,7 +68,12 @@ public class Settings{
 	
 	static{
 		final var mapper = new ObjectMapper();
-		mapper.setVisibility(mapper.getSerializationConfig().getDefaultVisibilityChecker().withFieldVisibility(JsonAutoDetect.Visibility.ANY).withGetterVisibility(JsonAutoDetect.Visibility.NONE).withSetterVisibility(JsonAutoDetect.Visibility.NONE).withCreatorVisibility(JsonAutoDetect.Visibility.NONE));
+		mapper.setVisibility(mapper.getSerializationConfig()
+				.getDefaultVisibilityChecker()
+				.withFieldVisibility(JsonAutoDetect.Visibility.ANY)
+				.withGetterVisibility(JsonAutoDetect.Visibility.NONE)
+				.withSetterVisibility(JsonAutoDetect.Visibility.NONE)
+				.withCreatorVisibility(JsonAutoDetect.Visibility.NONE));
 		mapper.enable(SerializationFeature.INDENT_OUTPUT);
 		objectReader = mapper.readerFor(UserConfiguration.class);
 		objectWriter = mapper.writerFor(UserConfiguration.class);

@@ -11,8 +11,8 @@ import fr.raksrinana.youtubestatistics.parser.youtubehistoryfile.YoutubeHistoryV
 import fr.raksrinana.youtubestatistics.settings.UserConfiguration;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
 import java.util.Optional;
@@ -37,8 +37,8 @@ public class YouTubeHistoryFileParser implements FileParser{
 	}
 	
 	private Optional<Set<YoutubeHistoryVideo>> getModel(@NonNull final Path filePath){
-		if(filePath.toFile().exists()){
-			try(final var fis = new FileInputStream(filePath.toFile())){
+		if(Files.exists(filePath)){
+			try(final var fis = Files.newInputStream(filePath)){
 				return Optional.ofNullable(objectReader.readValue(fis));
 			}
 			catch(final IOException e){
@@ -50,7 +50,12 @@ public class YouTubeHistoryFileParser implements FileParser{
 	
 	static{
 		final var mapper = new ObjectMapper();
-		mapper.setVisibility(mapper.getSerializationConfig().getDefaultVisibilityChecker().withFieldVisibility(JsonAutoDetect.Visibility.ANY).withGetterVisibility(JsonAutoDetect.Visibility.NONE).withSetterVisibility(JsonAutoDetect.Visibility.NONE).withCreatorVisibility(JsonAutoDetect.Visibility.NONE));
+		mapper.setVisibility(mapper.getSerializationConfig()
+				.getDefaultVisibilityChecker()
+				.withFieldVisibility(JsonAutoDetect.Visibility.ANY)
+				.withGetterVisibility(JsonAutoDetect.Visibility.NONE)
+				.withSetterVisibility(JsonAutoDetect.Visibility.NONE)
+				.withCreatorVisibility(JsonAutoDetect.Visibility.NONE));
 		mapper.enable(SerializationFeature.INDENT_OUTPUT);
 		objectReader = mapper.readerFor(new TypeReference<Set<YoutubeHistoryVideo>>(){});
 	}
