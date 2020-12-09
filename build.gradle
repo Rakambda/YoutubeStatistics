@@ -77,7 +77,8 @@ compileJava {
 
 shadowJar {
     archivesBaseName = project.name
-    archiveClassifier = 'shaded'
+    archiveClassifier.set('shaded')
+    archiveVersion.set('')
 }
 
 tasks.withType(JavaCompile) {
