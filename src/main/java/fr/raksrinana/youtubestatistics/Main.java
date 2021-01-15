@@ -27,7 +27,7 @@ public class Main{
 	public static void main(final String[] args){
 		var cli = new CommandLine(parameters);
 		cli.registerConverter(Path.class, Paths::get);
-		cli.setStopAtUnmatched(true);
+		cli.setUnmatchedArgumentsAllowed(true);
 		try{
 			cli.parseArgs(args);
 		}

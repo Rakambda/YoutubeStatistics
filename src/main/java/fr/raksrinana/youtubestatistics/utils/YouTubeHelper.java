@@ -109,7 +109,7 @@ public class YouTubeHelper{
 		try{
 			final var request = youtube.channels().list(List.of("snippet"));
 			final var response = request.setMine(true).execute();
-			if(response.getItems().isEmpty()){
+			if(Objects.isNull(response.getItems()) || response.getItems().isEmpty()){
 				log.warn("Unknown owner channel");
 				return Optional.empty();
 			}
