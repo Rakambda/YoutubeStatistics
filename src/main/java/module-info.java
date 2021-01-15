@@ -12,7 +12,7 @@ open module fr.raksrinana.youtubestatistics {
 	requires com.google.api.client.auth;
 	requires com.google.api.client.extensions.java6.auth;
 	requires com.google.api.client.extensions.jetty.auth;
-	requires com.google.api.client.json.jackson2;
+	requires com.google.api.client.json.gson;
 	requires com.google.api.services.youtube;
 	requires jdk.httpserver;
 	requires static lombok;
