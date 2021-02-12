@@ -4,7 +4,7 @@ buildscript {
         logback_version = '1.3.0-alpha5'
         picocli_version = '4.6.1'
         jackson_version = '2.12.1'
-        youtube_api_version = 'v3-rev20210206-1.31.0'
+        youtube_api_version = 'v3-rev20210210-1.31.0'
         google_api_version = '1.31.2'
         google_oauth_version = '1.31.4'
         progressbar_version = '0.9.0'
