@@ -6,7 +6,7 @@ buildscript {
         jackson_version = '2.12.2'
         youtube_api_version = 'v3-rev20210406-1.31.0'
         google_api_version = '1.31.4'
-        google_oauth_version = '1.31.4'
+        google_oauth_version = '1.31.5'
         progressbar_version = '0.9.1'
         threeten_version = '1.6.0'
     }
