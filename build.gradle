@@ -7,7 +7,7 @@ buildscript {
         youtube_api_version = 'v3-rev20210624-1.31.5'
         google_api_version = '1.32.1'
         google_oauth_version = '1.31.5'
-        progressbar_version = '0.9.1'
+        progressbar_version = '0.9.2'
         threeten_version = '1.6.0'
     }
 }
