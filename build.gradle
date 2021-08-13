@@ -17,7 +17,7 @@ plugins {
     id 'com.github.ben-manes.versions' version '0.39.0'
     id 'java'
     id 'application'
-    id 'io.freefair.lombok' version '5.3.3.3'
+    id 'io.freefair.lombok' version '6.1.0'
 }
 
 group = 'fr.raksrinana'
