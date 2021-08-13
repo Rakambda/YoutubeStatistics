@@ -17,7 +17,7 @@ import fr.raksrinana.youtubestatistics.settings.YouTubeVideo;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.threeten.extra.PeriodDuration;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -26,7 +26,7 @@ import java.time.DateTimeException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Slf4j
+@Log4j2
 public class YouTubeHelper{
 	@Getter
 	private static final Collection<String> SCOPES = Collections.singletonList("https://www.googleapis.com/auth/youtube.readonly");

@@ -1,6 +1,8 @@
 open module fr.raksrinana.youtubestatistics {
 	requires org.slf4j;
-	requires ch.qos.logback.classic;
+	requires org.apache.logging.log4j;
+	requires org.apache.logging.log4j.core;
+	requires org.apache.logging.log4j.slf4j;
 	requires info.picocli;
 	requires progressbar;
 	requires com.fasterxml.jackson.core;
@@ -15,5 +17,7 @@ open module fr.raksrinana.youtubestatistics {
 	requires com.google.api.client.json.gson;
 	requires com.google.api.services.youtube;
 	requires jdk.httpserver;
+	
 	requires static lombok;
+	requires static org.jetbrains.annotations;
 }

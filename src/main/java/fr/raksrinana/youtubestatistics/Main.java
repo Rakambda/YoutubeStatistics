@@ -6,7 +6,7 @@ import fr.raksrinana.youtubestatistics.settings.YouTubeChannel;
 import fr.raksrinana.youtubestatistics.utils.YouTubeChannelCollector;
 import fr.raksrinana.youtubestatistics.utils.YouTubeHelper;
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import me.tongfei.progressbar.ProgressBar;
 import org.threeten.extra.AmountFormats;
 import picocli.CommandLine;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 /**
  * Main class.
  */
-@Slf4j
+@Log4j2
 public class Main{
 	@Getter
 	private static final CLIParameters parameters = new CLIParameters();

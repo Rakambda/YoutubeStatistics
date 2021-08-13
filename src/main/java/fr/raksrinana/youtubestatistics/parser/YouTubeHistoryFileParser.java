@@ -10,7 +10,7 @@ import fr.raksrinana.youtubestatistics.interfaces.IYouTubeVideo;
 import fr.raksrinana.youtubestatistics.parser.youtubehistoryfile.YoutubeHistoryVideo;
 import fr.raksrinana.youtubestatistics.settings.UserConfiguration;
 import lombok.NonNull;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,7 +18,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
-@Slf4j
+@Log4j2
 public class YouTubeHistoryFileParser implements FileParser{
 	private static final ObjectReader objectReader;
 	
