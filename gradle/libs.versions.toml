@@ -9,7 +9,7 @@ progressbar-version = "0.9.3"
 threeten-version = "1.7.0"
 google-api-version = "1.32.2"
 google-oauth-version = "1.32.1"
-youtube-version = "v3-rev20210915-1.32.1"
+youtube-version = "v3-rev20220926-2.0.0"
 
 shadow-version = "7.1.0"
 names-version = "0.39.0"
