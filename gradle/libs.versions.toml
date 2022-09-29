@@ -12,7 +12,7 @@ google-oauth-version = "1.32.1"
 youtube-version = "v3-rev20220926-2.0.0"
 
 shadow-version = "7.1.2"
-names-version = "0.39.0"
+names-version = "0.42.0"
 lombok-version = "6.3.0"
 
 [libraries]
