@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.lombok)
 }
 
-group = "fr.raksrinana"
+group = "fr.rakambda"
 description = "YouTubeStatistics"
 
 dependencies {
