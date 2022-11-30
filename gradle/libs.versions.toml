@@ -7,7 +7,7 @@ jetbrains-annotations-version = "23.0.0"
 picocli-version = "4.7.0"
 progressbar-version = "0.9.5"
 threeten-version = "1.7.1"
-google-api-version = "2.0.1"
+google-api-version = "2.1.0"
 google-oauth-version = "1.34.1"
 youtube-version = "v3-rev20221108-2.0.0"
 
