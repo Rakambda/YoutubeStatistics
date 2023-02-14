@@ -10,10 +10,10 @@ threeten-version = "1.7.2"
 google-api-version = "2.2.0"
 google-oauth-version = "1.34.1"
 youtube-version = "v3-rev20230123-2.0.0"
+lombok-version = "1.18.26"
 
 shadow-version = "7.1.2"
 names-version = "0.45.0"
-lombok-version = "6.6.1"
 
 [libraries]
 slf4j = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j-version" }
@@ -29,6 +29,7 @@ threeten = { group = "org.threeten", name = "threeten-extra", version.ref = "thr
 google-api = { group = "com.google.api-client", name = "google-api-client", version.ref = "google-api-version" }
 google-oauth = { group = "com.google.oauth-client", name = "google-oauth-client-jetty", version.ref = "google-oauth-version" }
 youtube = { group = "com.google.apis", name = "google-api-services-youtube", version.ref = "youtube-version" }
+lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok-version" }
 
 [bundles]
 log4j2 = ["log4j2-core", "log4j2-slf4j"]
@@ -38,4 +39,3 @@ google = ["google-api", "google-oauth", "youtube"]
 [plugins]
 shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow-version" }
 names = { id = "com.github.ben-manes.versions", version.ref = "names-version" }
-lombok = { id = "io.freefair.lombok", version.ref = "lombok-version" }

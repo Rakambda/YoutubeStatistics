@@ -4,7 +4,6 @@ plugins {
     application
     alias(libs.plugins.shadow)
     alias(libs.plugins.names)
-    alias(libs.plugins.lombok)
 }
 
 group = "fr.rakambda"
@@ -24,6 +23,9 @@ dependencies {
     implementation(libs.bundles.google)
 
     compileOnly(libs.jetbrainsAnnotations)
+    compileOnly(libs.lombok)
+
+    annotationProcessor(libs.lombok)
 }
 
 repositories {
