@@ -1,54 +1,24 @@
-name: CI
+name: Build
 
-on: [ push ]
-
-env:
-  APP_JAVA_VERSION: 20
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout source
-        uses: actions/checkout@v3
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: ${{ env.APP_JAVA_VERSION }}
-          cache: 'gradle'
-      - name: Set gradle permissions
-        run: chmod +x gradlew
-      - name: Check project
-        run: ./gradlew check
-        env:
-          GITHUB_USER: RakSrinaNa
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    uses: Rakambda/rakambda-github-workflows/.github/workflows/gradle-build.yml@main
+    with:
+      java-version: ${{ vars.JAVA_VERSION }}
+      artifact-name: Gradle-Libs
 
   dropbox:
-    runs-on: ubuntu-latest
-    needs: build
-    if: contains('refs/heads/master', github.ref)
-    steps:
-      - name: Checkout source
-        uses: actions/checkout@v3
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: ${{ env.APP_JAVA_VERSION }}
-          cache: 'gradle'
-      - name: Set gradle permissions
-        run: chmod +x gradlew
-      - name: Build app
-        run: ./gradlew build
-        env:
-          GITHUB_USER: RakSrinaNa
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Deploy on Dropbox
-        uses: deka0106/upload-to-dropbox@v2.0.1
-        with:
-          dropbox_access_token: ${{ secrets.DROPBOX_DEPLOY_TOKEN }}
-          src: "build/libs/youtubestatistics-shaded.jar"
-          dest: "/Documents/JARs/YouTubeStatistics.jar"
-          mode: overwrite
+    uses: Rakambda/rakambda-github-workflows/.github/workflows/dropbox-publish-artifact.yml@main
+    if: github.ref == ${{ github.event.repository.default_branch }}
+    needs:
+      - build
+    with:
+      artifact-name: Gradle-Libs
+      source: "youtubestatistics-shaded.jar"
+      target: "/Documents/JARs/YouTubeStatistics.jar"
+    secrets:
+      dropbox-token: ${{ secrets.DROPBOX_TOKEN }}
