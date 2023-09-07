@@ -13,7 +13,7 @@ youtube-version = "v3-rev20230904-2.0.0"
 lombok-version = "1.18.28"
 
 shadow-version = "8.1.1"
-names-version = "0.47.0"
+names-version = "0.48.0"
 
 [libraries]
 slf4j = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j-version" }
