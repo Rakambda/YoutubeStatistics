@@ -14,7 +14,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
 
 /**
  * Main class.
@@ -47,7 +46,7 @@ public class Main{
 						final var videoIds = parser.getVideos(userConfiguration, parameters);
 						final var videosToGet = videoIds.stream()
 								.filter(video -> !userConfiguration.contains(video))
-								.collect(Collectors.toList());
+								.toList();
 						log.info("{} new videos to get", videosToGet.size());
 						if(!videosToGet.isEmpty()){
 							try(final var progressBar = new ProgressBar("Getting video info", videosToGet.size())){

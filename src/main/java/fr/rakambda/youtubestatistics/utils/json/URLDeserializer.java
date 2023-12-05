@@ -7,6 +7,7 @@ import lombok.NonNull;
 import lombok.extern.log4j.Log4j2;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 
 @Log4j2
@@ -14,7 +15,7 @@ public class URLDeserializer extends JsonDeserializer<URL>{
 	@Override
 	public URL deserialize(@NonNull final JsonParser jsonParser, @NonNull final DeserializationContext deserializationContext) throws IOException{
 		try{
-			return new URL(jsonParser.getValueAsString());
+			return URI.create(jsonParser.getValueAsString()).toURL();
 		}
 		catch(final MalformedURLException e){
 			log.trace("Failed to parse URL {}", jsonParser.getValueAsString());
