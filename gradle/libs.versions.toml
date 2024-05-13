@@ -8,7 +8,7 @@ picocli-version = "4.7.6"
 progressbar-version = "0.10.1"
 threeten-version = "1.8.0"
 google-api-version = "2.5.0"
-google-oauth-version = "1.35.0"
+google-oauth-version = "1.36.0"
 youtube-version = "v3-rev20240505-2.0.0"
 lombok-version = "1.18.32"
 
