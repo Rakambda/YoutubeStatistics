@@ -10,7 +10,7 @@ threeten-version = "1.8.0"
 google-api-version = "2.6.0"
 google-oauth-version = "1.36.0"
 youtube-version = "v3-rev20240514-2.0.0"
-lombok-version = "1.18.32"
+lombok-version = "1.18.34"
 
 shadow-version = "8.1.1"
 names-version = "0.51.0"
