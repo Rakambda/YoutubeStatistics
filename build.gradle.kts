@@ -10,6 +10,8 @@ group = "fr.rakambda"
 description = "YouTubeStatistics"
 
 dependencies {
+    implementation(platform(libs.jacksonBom))
+
     implementation(libs.slf4j)
     implementation(libs.bundles.log4j2)
 
